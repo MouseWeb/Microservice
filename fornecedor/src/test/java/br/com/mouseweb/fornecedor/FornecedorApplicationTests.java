@@ -1,10 +1,10 @@
-package br.com.mouseweb.loja;
+package br.com.mouseweb.fornecedor;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LojaApplicationTests {
+class FornecedorApplicationTests {
 
 	@Test
 	void contextLoads() {
