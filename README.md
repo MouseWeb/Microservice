@@ -35,4 +35,9 @@
   e ao uso de seus recursos de infraestrutura. Para reduzir esse custo, aplicações de microsserviços se encaixam bem, pois é possível 
   escalar automaticamente, de acordo com a demanda, e em questão de segundos, pedaços do que antes era uma única aplicação. Nesse cenário,
   configurar manualmente os servidores com as configurações necessárias para cada aplicação é impraticável.
-  
+- Um servidor de configuração é o lugar central para definir as configurações dos serviços.
+- Todas as configurações dos microsserviços devem ficar externalizadas e centralizadas.
+- O Spring Config Server é uma implementação do servidor do projeto Spring Cloud.
+- Sobre a integração dos microsserviços com o servidor de configuração.
+  Para tal, devemos configurar o nome do microsserviço, profile e URL do Config Server
+- Repositório de configurações GitHub.

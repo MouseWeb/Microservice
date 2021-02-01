@@ -3,10 +3,9 @@ server:
   port: 8888
 
 spring:
-  profiles:
-    active: native
   cloud:
     config:
       server:
-        native:
-          search-locations: C:/Douglas/Microservice/Alura/microservices-spring-cloud-service-registry-config-server/microservices/microservice-repo
+        git:
+          uri: https://github.com/MouseWeb/Microservice/tree/master/microservice-repo
+          search-paths: fornecedor
