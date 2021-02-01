@@ -45,3 +45,9 @@
   <h2>########## Load Balancer e Spring Feign ##########</h2>
 - A cada requisição, o Ribbon rotaciona para uma instância diferente. Todavia, é possível customizar o algoritmo de load balancing.
 - Load Balancing é o processo de distribuir as requisições vindas dos usuários para as várias instâncias disponíveis.
+
+<h2>########## Edponts ##########</h2>
+- LOJA - compra = http://localhost:8080/compra
+- FORNECEDOR - info = http://localhost:8081/info/{param}
+- EUREKA - apps = http://localhost:8761/eureka/apps
+- CONFIG-SERVER - fornecedor = http://localhost:8888/fornecedor/default
