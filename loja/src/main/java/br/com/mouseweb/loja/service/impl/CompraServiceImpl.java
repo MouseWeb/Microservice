@@ -7,6 +7,7 @@ import br.com.mouseweb.loja.util.Endpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,9 @@ public class CompraServiceImpl implements CompraService {
     @Autowired
     Endpoint endpoint;
 
+    @Autowired
+    private DiscoveryClient eurekaCliente;
+
     public void realizaCompra(CompraDTO compra) {
         ResponseEntity<InfoFornecedorDTO> exchange = new ResponseEntity<> (HttpStatus.NO_CONTENT);
         exchange = this.restTemplate.exchange(endpoint.getFornecedorInfo() +
@@ -31,6 +35,11 @@ public class CompraServiceImpl implements CompraService {
                 HttpMethod.GET,
                 null,
                 InfoFornecedorDTO.class);
+
+        eurekaCliente.getInstances("fornecedor").stream()
+                .forEach( fornecedor -> {
+                    log.info("localhost:"+ fornecedor.getPort());
+                });
 
         log.info(exchange.getBody().getEndereco());
 

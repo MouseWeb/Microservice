@@ -41,3 +41,7 @@
 - Sobre a integração dos microsserviços com o servidor de configuração.
   Para tal, devemos configurar o nome do microsserviço, profile e URL do Config Server
 - Repositório de configurações GitHub.
+
+  <h2>########## Load Balancer e Spring Feign ##########</h2>
+- A cada requisição, o Ribbon rotaciona para uma instância diferente. Todavia, é possível customizar o algoritmo de load balancing.
+- Load Balancing é o processo de distribuir as requisições vindas dos usuários para as várias instâncias disponíveis.
