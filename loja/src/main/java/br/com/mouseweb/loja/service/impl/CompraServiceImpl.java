@@ -18,7 +18,8 @@ public class CompraServiceImpl implements CompraService {
 
     private final Logger log = LoggerFactory.getLogger(CompraServiceImpl.class);
 
-    RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Autowired
     Endpoint endpoint;
