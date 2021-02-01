@@ -47,7 +47,7 @@
 - Load Balancing é o processo de distribuir as requisições vindas dos usuários para as várias instâncias disponíveis.
 
 <h2>########## Edponts ##########</h2>
-- LOJA - compra = http://localhost:8080/compra
-- FORNECEDOR - info = http://localhost:8081/info/{param}
-- EUREKA - apps = http://localhost:8761/eureka/apps
-- CONFIG-SERVER - fornecedor = http://localhost:8888/fornecedor/default
+- LOJA - compra = http://localhost:8080/compra </br>
+- FORNECEDOR - info = http://localhost:8081/info/{param} </br>
+- EUREKA - apps = http://localhost:8761/eureka/apps </br>
+- CONFIG-SERVER - fornecedor = http://localhost:8888/fornecedor/default </br>
