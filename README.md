@@ -1,5 +1,5 @@
  
- ########## Quebranco o  dominío em serviços ##########
+  ########## Quebranco o  dominío em serviços ##########
 - Microservice não tem transação asset = (TRANSAÇÃO ASSET) -> pindura os recursos de treards, conexões e no final 
   commita ou tudo dá certo ou executa o rollback.
 
