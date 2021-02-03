@@ -1,6 +1,7 @@
 package br.com.mouseweb.loja.controller;
 
 import br.com.mouseweb.loja.controller.dto.CompraDTO;
+import br.com.mouseweb.loja.entity.Compra;
 import br.com.mouseweb.loja.openfeign.CompraServiceFeingClint;
 import br.com.mouseweb.loja.service.CompraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,9 @@ public class CompraController {
     private CompraServiceFeingClint compraServiceFeingClint;
 
     @PostMapping
-    public void realizaCompra(@RequestBody CompraDTO compra){
+    public Compra realizaCompra(@RequestBody CompraDTO compra){
         //compraService.realizaCompra(compra);
-        compraServiceFeingClint.realizaCompra(compra);
+        return compraServiceFeingClint.realizaCompra(compra);
+
     }
 }

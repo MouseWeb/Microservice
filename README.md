@@ -44,10 +44,19 @@
 
   <h2>########## Load Balancer e Spring Feign ##########</h2>
 - A cada requisição, o Ribbon rotaciona para uma instância diferente. Todavia, é possível customizar o algoritmo de load balancing.
-- Load Balancing é o processo de distribuir as requisições vindas dos usuários para as várias instâncias disponíveis.
+- Load Balancing é o processo de distribuir as requisições vindas dos usuários para as várias instâncias disponíveis. 
+- O Client Side Load Balancing (CSLB) é o cliente HTTP que decide qual microsserviço recebe a requisição. </br>
+  Isto é importante, pois pode ter várias instâncias do mesmo serviço no ar. </br>
+  A configuração do CSLB é feita a partir da anotação @LoadBalanced, na criação do RestTemplate. </br>
+  Como implementação do CSLB, usamos um projeto chamado Ribbon, que faz parte do Spring Cloud Netflix.
+- Para descobrir quais clientes existem, podemos injetar a interface DiscoveryClient.
+- Como alternativa ao RestTemplate, podemos usar o Spring Feign, que já usa o Ribbon para CSLB.
+- O Spring Feign exige apenas uma interface, com a definição e mapeamento dos métodos que executarão a requisição. </br>
+  Toda a implementação da interface é gerada pelo Spring Feign.
 
 <h2>########## Edponts ##########</h2>
 - LOJA - compra = http://localhost:8080/compra </br>
 - FORNECEDOR - info = http://localhost:8081/info/{param} </br>
+- FORNECEDOR - produto = http://localhost:8081/produto/{param} </br>
 - EUREKA - apps = http://localhost:8761/eureka/apps </br>
 - CONFIG-SERVER - fornecedor = http://localhost:8888/fornecedor/default </br>

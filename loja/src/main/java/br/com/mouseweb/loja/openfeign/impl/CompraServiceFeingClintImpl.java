@@ -2,6 +2,8 @@ package br.com.mouseweb.loja.openfeign.impl;
 
 import br.com.mouseweb.loja.controller.dto.CompraDTO;
 import br.com.mouseweb.loja.controller.dto.InfoFornecedorDTO;
+import br.com.mouseweb.loja.controller.dto.InfoPedidoDTO;
+import br.com.mouseweb.loja.entity.Compra;
 import br.com.mouseweb.loja.openfeign.CompraServiceFeingClint;
 import br.com.mouseweb.loja.openfeign.FornecedorFeingClint;
 import br.com.mouseweb.loja.util.Endpoint;
@@ -21,12 +23,20 @@ public class CompraServiceFeingClintImpl implements CompraServiceFeingClint {
     @Autowired
     private FornecedorFeingClint fornecedorClient;
 
-    public void realizaCompra(CompraDTO compra) {
+    public Compra realizaCompra(CompraDTO compra) {
 
         InfoFornecedorDTO info = fornecedorClient.getInfoPorEstado(compra.getEndereco().getEstado());
 
+        InfoPedidoDTO pedido = fornecedorClient.realizaPedido(compra.getItens());
+
         log.info(info.getEndereco());
 
+        Compra compraSalva = new Compra();
+        compraSalva.setPedido(pedido.getId());
+        compraSalva.setTempoDePreparo(pedido.getTempoDePreparo());
+        compraSalva.setEnderecoDestino(compra.getEndereco().toString());
+
+        return compraSalva;
     }
 
 
