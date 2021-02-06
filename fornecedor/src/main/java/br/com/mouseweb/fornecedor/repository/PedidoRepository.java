@@ -1,8 +1,10 @@
 package br.com.mouseweb.fornecedor.repository;
 
 import br.com.mouseweb.fornecedor.entity.Pedido;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PedidoRepository extends CrudRepository<Pedido, Long>{
+@Repository
+public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
 }
