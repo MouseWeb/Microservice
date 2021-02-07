@@ -64,6 +64,19 @@
   Além da facilidade de acessar em um único local todo o log gerado pela aplicação, temos também a possibilidade de filtrar </br>
   os logs em uma única transação. Com isso, através da formatação adequada do log, sabemos não só onde os erros foram gerados, </br>
   mas em que momento aconteceu, pois os logs são escritos com os dados de milissegundos logo no início da linha.
+- Como se trata de uma arquitetura distribuída, temos logs distribuídos.</br>
+  Ou seja, cada microsserviço (e instância dele) possui o seu log.</br>
+  Isso dificulta o acompanhamento e rastreabilidade das requisições.</br>
+- Para unificar os logs, precisamos de agregadores de log.</br>
+  Como implementação de um agregador, usamos o Papertrail, um agregador como serviço.</br>
+- A biblioteca Logback para gerar e enviar os logs ao agregador.</br>
+  O Logback possui um appender, que possibilita o envio dos logs.
+  
+- Para acompanhar uma transação nos logs, usamos uma correlation-id.</br>
+  A correltation-id é um identificador da transação, que é passada de requisição pra requisição.</br>
+  Dessa forma, podemos entender quais requisições fazem parte da mesma transação.</br>
+- A biblioteca Spring Sleuth, que é usada para gerar a correlation-id.
+  ![img_1.png](img_1.png)
 - LOG's = https://papertrailapp.com/
 
 <h2>########## Edponts ##########</h2>
@@ -73,3 +86,5 @@
 - FORNECEDOR - pedido = http://localhost:8081/pedido </br>
 - EUREKA - apps = http://localhost:8761/eureka/apps </br>
 - CONFIG-SERVER - fornecedor = http://localhost:8888/fornecedor/default </br>
+
+Direito autoral: https://cursos.alura.com.br/

@@ -3,7 +3,6 @@ package br.com.mouseweb.fornecedor.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.mouseweb.fornecedor.controller.InfoController;
 import br.com.mouseweb.fornecedor.dto.ItemDoPedidoDTO;
 import br.com.mouseweb.fornecedor.entity.Pedido;
 import br.com.mouseweb.fornecedor.entity.PedidoItem;
