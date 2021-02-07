@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CompraServiceFeingClintImpl implements CompraServiceFeingClint {
 
-    private final Logger log = LoggerFactory.getLogger(br.com.mouseweb.loja.service.impl.CompraServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CompraServiceFeingClintImpl.class);
 
     @Autowired
     Endpoint endpoint;
@@ -25,11 +25,11 @@ public class CompraServiceFeingClintImpl implements CompraServiceFeingClint {
 
     public Compra realizaCompra(CompraDTO compra) {
 
+        LOG.info("buscando informações do fornecedor de {}", compra.getEndereco().getEstado());
         InfoFornecedorDTO info = fornecedorClient.getInfoPorEstado(compra.getEndereco().getEstado());
 
+        LOG.info("relizando um pedido");
         InfoPedidoDTO pedido = fornecedorClient.realizaPedido(compra.getItens());
-
-        log.info(info.getEndereco());
 
         Compra compraSalva = new Compra();
         compraSalva.setPedido(pedido.getId());

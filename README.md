@@ -54,9 +54,22 @@
 - O Spring Feign exige apenas uma interface, com a definição e mapeamento dos métodos que executarão a requisição. </br>
   Toda a implementação da interface é gerada pelo Spring Feign.
 
+  <h2>########## Distributed Tracing e Spring Sleuth ##########</h2>
+- Como a geração dos logs são impactados com a arquitetura em microsserviços?</br>
+  uma requisição do usuário bate em várias aplicações diferentes, para que a lógica de negócio requerida seja </br>
+  realizada. Com isso, acompanhar os logs gerados em uma transação não é tão simples quanto abrir um único log e ter </br>
+  toda a informação disponível.
+  
+- O que ganhamos com agregação de logs e a geração de ID de correlação?</br>
+  Além da facilidade de acessar em um único local todo o log gerado pela aplicação, temos também a possibilidade de filtrar </br>
+  os logs em uma única transação. Com isso, através da formatação adequada do log, sabemos não só onde os erros foram gerados, </br>
+  mas em que momento aconteceu, pois os logs são escritos com os dados de milissegundos logo no início da linha.
+- LOG's = https://papertrailapp.com/
+
 <h2>########## Edponts ##########</h2>
 - LOJA - compra = http://localhost:8080/compra </br>
 - FORNECEDOR - info = http://localhost:8081/info/{param} </br>
 - FORNECEDOR - produto = http://localhost:8081/produto/{param} </br>
+- FORNECEDOR - pedido = http://localhost:8081/pedido </br>
 - EUREKA - apps = http://localhost:8761/eureka/apps </br>
 - CONFIG-SERVER - fornecedor = http://localhost:8888/fornecedor/default </br>

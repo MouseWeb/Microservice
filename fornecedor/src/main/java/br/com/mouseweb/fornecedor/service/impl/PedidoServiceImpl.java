@@ -3,6 +3,7 @@ package br.com.mouseweb.fornecedor.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import br.com.mouseweb.fornecedor.controller.InfoController;
 import br.com.mouseweb.fornecedor.dto.ItemDoPedidoDTO;
 import br.com.mouseweb.fornecedor.entity.Pedido;
 import br.com.mouseweb.fornecedor.entity.PedidoItem;
@@ -10,11 +11,15 @@ import br.com.mouseweb.fornecedor.entity.Produto;
 import br.com.mouseweb.fornecedor.repository.PedidoRepository;
 import br.com.mouseweb.fornecedor.repository.ProdutoRepository;
 import br.com.mouseweb.fornecedor.service.PedidoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PedidoServiceImpl implements PedidoService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PedidoServiceImpl.class);
 
     @Autowired
     private PedidoRepository pedidoRepository;
