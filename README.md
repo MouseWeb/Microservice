@@ -79,6 +79,24 @@
   ![img_1.png](img_1.png)
 - LOG's = https://papertrailapp.com/
 
+  <h2>########## Fallback e Circuit Breaker ##########</h2>
+- Impacto na aplicação por problemas de lentidão ao consultar outros microsserviço.
+- Os problemas gerados na integração da Loja com o Fornecedor.
+- A implementação do Circuit Breaker com Hystrix, limitando o tempo de processamento para 1 segundo</br>
+  Como funciona o Fallback Method.
+- O uso do Fallback para tratar a interrupção da Thread efetuada pelo Circuit Breaker.
+- É possível forçar que uma requisição seja cancelada após algum tempo, utilizando a técnica de Timeout, </br>
+  onde definimos um tempo máximo de processamento daquela requisição. Qual a vantagem do Circuit Breaker, </br>
+  em comparação ao uso de Timeout?</br>
+    O Circuit Breaker tem como funcionalidade principal a análise das requisições anteriores, para decidir </br>
+  se deve parar de repassar as requisições vindas do cliente para um microsserviço com problemas de performance. </br>
+  Enquanto o circuito está fechado, o Hystrix continua tentando a cada 5 segundos, com o objetivo de verificar </br>
+  se o servidor voltou a funcionar normalmente.
+- A capacidade que o Hystrix tem com Circuit Breaker pode ser aprimorada pelo Fallback em qual circunstância? </br>
+     O Circuit Breaker implementado pelo Hystrix executa o processamento em uma thread separada. Quando o tempo limite </br>
+  é excedido, o Hystrix mata a execução da thread e, caso configurado, repassa a execução para o método de Fallback, </br>
+  de forma que este possa implementar livremente um tratamento de erro.
+
 <h2>########## Edponts ##########</h2>
 - LOJA - compra = http://localhost:8080/compra </br>
 - FORNECEDOR - info = http://localhost:8081/info/{param} </br>
