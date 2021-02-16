@@ -55,12 +55,11 @@
   Toda a implementação da interface é gerada pelo Spring Feign.
 
   <h2>########## Distributed Tracing e Spring Sleuth ##########</h2>
-- Como a geração dos logs são impactados com a arquitetura em microsserviços?</br>
+- **Como a geração dos logs são impactados com a arquitetura em microsserviços?**</br>
   uma requisição do usuário bate em várias aplicações diferentes, para que a lógica de negócio requerida seja </br>
   realizada. Com isso, acompanhar os logs gerados em uma transação não é tão simples quanto abrir um único log e ter </br>
   toda a informação disponível.
-  
-- O que ganhamos com agregação de logs e a geração de ID de correlação?</br>
+- **O que ganhamos com agregação de logs e a geração de ID de correlação?**</br>
   Além da facilidade de acessar em um único local todo o log gerado pela aplicação, temos também a possibilidade de filtrar </br>
   os logs em uma única transação. Com isso, através da formatação adequada do log, sabemos não só onde os erros foram gerados, </br>
   mas em que momento aconteceu, pois os logs são escritos com os dados de milissegundos logo no início da linha.
@@ -71,7 +70,6 @@
   Como implementação de um agregador, usamos o Papertrail, um agregador como serviço.</br>
 - A biblioteca Logback para gerar e enviar os logs ao agregador.</br>
   O Logback possui um appender, que possibilita o envio dos logs.
-  
 - Para acompanhar uma transação nos logs, usamos uma correlation-id.</br>
   A correltation-id é um identificador da transação, que é passada de requisição pra requisição.</br>
   Dessa forma, podemos entender quais requisições fazem parte da mesma transação.</br>
@@ -85,20 +83,33 @@
 - A implementação do Circuit Breaker com Hystrix, limitando o tempo de processamento para 1 segundo</br>
   Como funciona o Fallback Method.
 - O uso do Fallback para tratar a interrupção da Thread efetuada pelo Circuit Breaker.
-- É possível forçar que uma requisição seja cancelada após algum tempo, utilizando a técnica de Timeout, </br>
+- **É possível forçar que uma requisição seja cancelada após algum tempo, utilizando a técnica de Timeout, </br>
   onde definimos um tempo máximo de processamento daquela requisição. Qual a vantagem do Circuit Breaker, </br>
-  em comparação ao uso de Timeout?</br>
+  em comparação ao uso de Timeout?**</br>
     O Circuit Breaker tem como funcionalidade principal a análise das requisições anteriores, para decidir </br>
   se deve parar de repassar as requisições vindas do cliente para um microsserviço com problemas de performance. </br>
   Enquanto o circuito está fechado, o Hystrix continua tentando a cada 5 segundos, com o objetivo de verificar </br>
   se o servidor voltou a funcionar normalmente.
-- A capacidade que o Hystrix tem com Circuit Breaker pode ser aprimorada pelo Fallback em qual circunstância? </br>
+- **A capacidade que o Hystrix tem com Circuit Breaker pode ser aprimorada pelo Fallback em qual circunstância?** </br>
      O Circuit Breaker implementado pelo Hystrix executa o processamento em uma thread separada. Quando o tempo limite </br>
   é excedido, o Hystrix mata a execução da thread e, caso configurado, repassa a execução para o método de Fallback, </br>
   de forma que este possa implementar livremente um tratamento de erro.
 
-<h2>########## Edponts ##########</h2>
+  <h2>########## Bulkhead com Hystrix ##########</h2>
+- O Hystrix executa uma gerência de um pool de threads.
+- A combinação de um volume alto de requisições para um único serviço de um microsserviço pode indisponibilizar </br>
+  as outras requisições.
+- Dividido as threads entre os serviços buscaCompra e realizaCompra.
+- **Quando temos microsserviços, isso significa que podemos escalar a nossa aplicação horizontalmente, ou seja, subir</br>
+  mais máquinas para ter várias instâncias e recursos de hardware disponíveis para estas. Além disso, podemos ter </br>
+  várias threads dentro do mesmo microsserviço. Com Bulkhead, ganhamos mais uma funcionalidade de processamento paralelo, </br>
+  que nos traz qual vantagem?**</br>
+  Precisamos implementar um microsserviço tolerante a falhas, resiliente a integrações defeituosas e capaz de não </br>
+  indisponibilizar toda a aplicação por causa de uma única funcionalidade.
+
+<h2>########## Endpoints ##########</h2>
 - LOJA - compra = http://localhost:8080/compra </br>
+- LOJA - pedido = http://localhost:8080/compra/{param}
 - FORNECEDOR - info = http://localhost:8081/info/{param} </br>
 - FORNECEDOR - produto = http://localhost:8081/produto/{param} </br>
 - FORNECEDOR - pedido = http://localhost:8081/pedido </br>

@@ -1,7 +1,7 @@
 package br.com.mouseweb.loja.service.impl;
 
-import br.com.mouseweb.loja.controller.dto.CompraDTO;
-import br.com.mouseweb.loja.controller.dto.InfoFornecedorDTO;
+import br.com.mouseweb.loja.dto.CompraDTO;
+import br.com.mouseweb.loja.dto.InfoFornecedorDTO;
 import br.com.mouseweb.loja.service.CompraService;
 import br.com.mouseweb.loja.util.Endpoint;
 import org.slf4j.Logger;

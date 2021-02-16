@@ -1,6 +1,6 @@
 package br.com.mouseweb.loja.service;
 
-import br.com.mouseweb.loja.controller.dto.CompraDTO;
+import br.com.mouseweb.loja.dto.CompraDTO;
 
 public interface CompraService {
 

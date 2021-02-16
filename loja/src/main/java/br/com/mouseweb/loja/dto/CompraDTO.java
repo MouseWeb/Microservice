@@ -1,4 +1,4 @@
-package br.com.mouseweb.loja.controller.dto;
+package br.com.mouseweb.loja.dto;
 
 import lombok.Data;
 
