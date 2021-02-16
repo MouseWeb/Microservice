@@ -2,8 +2,7 @@ package br.com.mouseweb.loja.controller;
 
 import br.com.mouseweb.loja.dto.CompraDTO;
 import br.com.mouseweb.loja.entity.Compra;
-import br.com.mouseweb.loja.openfeign.CompraServiceFeingClint;
-import br.com.mouseweb.loja.service.CompraService;
+import br.com.mouseweb.loja.openfeign.CompraServiceFeingClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,7 @@ public class CompraController {
     private CompraService compraService;*/
 
     @Autowired
-    private CompraServiceFeingClint compraServiceFeingClint;
+    private CompraServiceFeingClient compraServiceFeingClint;
 
     @GetMapping("/{id}")
     public Compra getById(@PathVariable("id") Long id) {

@@ -100,16 +100,23 @@
 - A combinação de um volume alto de requisições para um único serviço de um microsserviço pode indisponibilizar </br>
   as outras requisições.
 - Dividido as threads entre os serviços buscaCompra e realizaCompra.
-- **Quando temos microsserviços, isso significa que podemos escalar a nossa aplicação horizontalmente, ou seja, subir</br>
-  mais máquinas para ter várias instâncias e recursos de hardware disponíveis para estas. Além disso, podemos ter </br>
-  várias threads dentro do mesmo microsserviço. Com Bulkhead, ganhamos mais uma funcionalidade de processamento paralelo, </br>
-  que nos traz qual vantagem?**</br>
+- **Quando temos microsserviços, isso significa que podemos escalar a nossa aplicação horizontalmente, </br>
+  ou seja, subir mais máquinas para ter várias instâncias e recursos de hardware disponíveis para estas. </br>
+  Além disso, podemos ter várias threads dentro do mesmo microsserviço. Com Bulkhead, ganhamos mais uma 
+  funcionalidade de processamento paralelo, que nos traz qual vantagem?**</br>
   Precisamos implementar um microsserviço tolerante a falhas, resiliente a integrações defeituosas e capaz de não </br>
   indisponibilizar toda a aplicação por causa de uma única funcionalidade.
 
+  <h2>########## Lidando com transação e erros ##########</h2>
+- Como realizar a compra com os dados do pedido e do voucher do transporte, utilizando os id's fornecidos </br>
+  pelos microsserviços.
+- O entendimento de que, com microsserviços, uma transação do usuário passa por diversos microsserviços e </br>
+  que a gestão dessa transação fica sob a responsabilidade do programador.
+- Como tratar os erros na transação, marcando o que foi processado com o uso de estados.
+
 <h2>########## Endpoints ##########</h2>
 - LOJA - compra = http://localhost:8080/compra </br>
-- LOJA - pedido = http://localhost:8080/compra/{param}
+- LOJA - pedido = http://localhost:8080/compra/{param} </br>
 - FORNECEDOR - info = http://localhost:8081/info/{param} </br>
 - FORNECEDOR - produto = http://localhost:8081/produto/{param} </br>
 - FORNECEDOR - pedido = http://localhost:8081/pedido </br>

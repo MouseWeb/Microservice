@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @FeignClient("fornecedor")
-public interface FornecedorFeingClint {
+public interface FornecedorFeingClient {
 
     @GetMapping("/info/{estado}")
     InfoFornecedorDTO getInfoPorEstado(@PathVariable String estado);
