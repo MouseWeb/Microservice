@@ -114,6 +114,19 @@
   que a gestão dessa transação fica sob a responsabilidade do programador.
 - Como tratar os erros na transação, marcando o que foi processado com o uso de estados.
 
+  <h2>########## API Gateway com Spring Zuul ##########</h2>
+- **Para que os nossos microsserviços se comuniquem entre si, eles fazem o uso do Eureka, tanto para se </br>
+  disponibilizarem como para descobrir instâncias de outros microsserviços. Qual a necessidade do Api </br>
+  Gateway, já que os nossos microsserviços se conhecem?** </br>
+  Uma aplicação rodando no navegador, ou mesmo em um aplicativo móvel, não deveria ter a inteligência </br>
+  de se comunicar com o Eureka, nosso Service Discovery, para descobrir as instâncias disponíveis. Aliás, </br>
+  faz sentido expor o Eureka na internet? não.
+- **Uma integração entre o Zuul e o Eureka Server. O que ganhamos com essa integração?** </br>
+- O Zuul utiliza o Eureka para conhecer as instâncias dos microsserviços e, usando o Ribbon, fazer o </br>
+  balanceamento de carga das requisições dos usuários.
+- Api Gateway cria um único ponto de acesso à nossa aplicação.
+
+
 <h2>########## Endpoints ##########</h2>
 - LOJA - compra = http://localhost:8080/compra </br>
 - LOJA - pedido = http://localhost:8080/compra/{param} </br>
@@ -122,5 +135,7 @@
 - FORNECEDOR - pedido = http://localhost:8081/pedido </br>
 - EUREKA - apps = http://localhost:8761/eureka/apps </br>
 - CONFIG-SERVER - fornecedor = http://localhost:8888/fornecedor/default </br>
+- API Gateway Zuul - Routes = http://localhost:5555/actuator/routes </br>
+
 
 Direito autoral: https://cursos.alura.com.br/
