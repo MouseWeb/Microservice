@@ -36,4 +36,5 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
         endpoints.authenticationManager(authenticationManager)
                 .userDetailsService(detailsService);
     }
+
 }
