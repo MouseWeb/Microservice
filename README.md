@@ -1,5 +1,3 @@
- Microservices com Spring Cloud: Registry, Config Server e Distributed Tracing
- 
   <h2>########## Quebranco o  dominío em serviços ##########</h2>
 
 - Um microservice não tem estado e não lembra o que está acontecendo e de quem é o usuário de está fazendo
@@ -122,10 +120,23 @@
   de se comunicar com o Eureka, nosso Service Discovery, para descobrir as instâncias disponíveis. Aliás, </br>
   faz sentido expor o Eureka na internet? não.
 - **Uma integração entre o Zuul e o Eureka Server. O que ganhamos com essa integração?** </br>
-- O Zuul utiliza o Eureka para conhecer as instâncias dos microsserviços e, usando o Ribbon, fazer o </br>
+  O Zuul utiliza o Eureka para conhecer as instâncias dos microsserviços e, usando o Ribbon, fazer o </br>
   balanceamento de carga das requisições dos usuários.
 - Api Gateway cria um único ponto de acesso à nossa aplicação.
 
+  <h2>########## Autenticação e autorização ##########</h2>
+- **Como os microsserviços identificam o usuário logado?** </br>
+  Extraindo o token da requisição e consultando os dados do usuário no servidor de autenticação.</br>
+  Quando o usuário faz uma requisição para um serviço que demanda que o usuário esteja logado, </br>
+  no header da requisição, o usuário envia um token, que ele conseguiu previamente através do </br>
+  servidor de autenticação.
+- **Como o Spring Security e o Spring Cloud OAuth são integrados?** </br>
+- A integração é feita quanto estendemos o WebSecurityConfigurerAdapter e expomos os recursos </br>
+  do Spring Security para serem utilizados pelo Spring Cloud OAuth. </br>
+  AuthenticationManager e UserDetailService são os beans expostos do Spring Security e injetados </br>
+  no Adapter do Spring Cloud OAuth2: o AuthorizationServerConfigurerAdapter. Mais especificamente, </br>
+  a integração é feita no método configure deste adapter.
+-
 
 <h2>########## Endpoints ##########</h2>
 - LOJA - compra = http://localhost:8080/compra </br>
@@ -136,6 +147,7 @@
 - EUREKA - apps = http://localhost:8761/eureka/apps </br>
 - CONFIG-SERVER - fornecedor = http://localhost:8888/fornecedor/default </br>
 - API Gateway Zuul - Routes = http://localhost:5555/actuator/routes </br>
+- AUTH - token = http://localhost:8088/oauth/token </br>
+- AUTH - Access Token = http://localhost:8088/user </br>
 
-
-Direito autoral: https://cursos.alura.com.br/
+</br>Direito autoral: https://cursos.alura.com.br/
