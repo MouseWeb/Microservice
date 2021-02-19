@@ -15,3 +15,7 @@ management:
       exposure:
         include:
           - "routes"
+
+zuul:
+  sensitive-headers:
+    - Cookie, Authorization
