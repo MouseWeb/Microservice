@@ -136,7 +136,13 @@
   AuthenticationManager e UserDetailService são os beans expostos do Spring Security e injetados </br>
   no Adapter do Spring Cloud OAuth2: o AuthorizationServerConfigurerAdapter. Mais especificamente, </br>
   a integração é feita no método configure deste adapter.
--
+- Criado um servidor de autenticação com Spring Security e Spring Cloud OAuth2.
+- A implementação da integração entre o Spring Security e o Spring Cloud OAuth2.
+- Gerado e validado tokens no servidor de autenticação.
+- Integração dos microsserviços com o servidor de autenticação.
+- Repassar o token de autenticação através do Zuul.
+- Implementado filtro do Feign para repassar o token do usuário nas chamadas para os microsserviços  </br>
+  Fornecedor e Transportador
 
 <h2>########## Endpoints ##########</h2>
 - LOJA - compra = http://localhost:8080/compra </br>
